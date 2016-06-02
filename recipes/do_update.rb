@@ -22,7 +22,7 @@ case node['platform_family']
 when 'debian'
   include_recipe 'apt'
   execute 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y '\
-          '-o Dpkg::Options::="--force-confnew" --force-yes dist-upgrade'
+          '-o Dpkg::Options::="--force-confnew" --force-yes upgrade'
 
 when 'rhel'
   execute 'yum -y update'
