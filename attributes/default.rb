@@ -27,3 +27,4 @@ default['cookbook-updater']['packages']['user'] = value_for_platform(
   'amazon'  => {'default' => 'ec2-user'},
   'default' => 'root'
 )
+default['cookbook-updater']['log'] = '/var/log/cb_updater'

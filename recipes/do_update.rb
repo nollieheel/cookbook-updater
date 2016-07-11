@@ -18,14 +18,21 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'debian'
-  include_recipe 'apt'
-  execute 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y '\
-          '-o Dpkg::Options::="--force-confnew" --force-yes upgrade'
+str1 = 'stamp=$( date +"%Y-%m-%d" );'
+str2 = "2>&1 | tee -a \"#{node['cookbook-updater']['log']}/update_${stamp}.log\""
 
-when 'rhel'
-  execute 'yum -y update'
+directory node['cookbook-updater']['log'] do
+  recursive true
+end
+
+case node['platform']
+when 'ubuntu'
+  include_recipe 'apt'
+  execute "#{str1} apt-get update && DEBIAN_FRONTEND=noninteractive apt-get "\
+          "-y -o Dpkg::Options::=\"--force-confnew\" --force-yes upgrade #{str2}"
+
+when 'centos', 'amazon'
+  execute "#{str1} yum -y update #{str2}"
 
 else
   log "No action specified for #{node['platform_family']}" do

@@ -4,7 +4,7 @@ Performs package and OS updates on a server.
 
 ## Supported Platforms
 
-Ubuntu 14.04
+Ubuntu
 
 ## Attributes
 
@@ -25,6 +25,12 @@ Ubuntu 14.04
     <td>String</td>
     <td>Standard SSH username for EC2 server.</td>
     <td><tt>(please check default attributes file)</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['cookbook-updater']['log']</tt></td>
+    <td>String</td>
+    <td>Location of log files.</td>
+    <td><tt>'/var/log/cb_updater'</tt></td>
   </tr>
 </table>
 

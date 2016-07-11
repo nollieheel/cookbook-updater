@@ -6,8 +6,10 @@ description      'Installs/Configures cookbook-updater'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url       'https://github.com/nollieheel/cookbook-updater'
 issues_url       'https://github.com/nollieheel/cookbook-updater/issues'
-version          '0.1.1'
+version          '0.2.0'
 
 depends 'apt'
 
-supports 'ubuntu', '>= 14.04'
+supports 'ubuntu'
+supports 'centos'
+supports 'amazon'
